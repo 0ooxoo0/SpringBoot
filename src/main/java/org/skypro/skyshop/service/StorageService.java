@@ -36,8 +36,12 @@ public class StorageService {
         return list;
     }
 
+    // ----- НОВЫЙ МЕТОД -----
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(productMap.get(id));
+    }
+
     private void initTestData() {
-        // Продукты (как в исходном main)
         SimpleProduct apple = new SimpleProduct(UUID.randomUUID(), "Яблоко", 100);
         DiscountedProduct bread = new DiscountedProduct(UUID.randomUUID(), "Хлеб", 50, 20);
         SimpleProduct milk = new SimpleProduct(UUID.randomUUID(), "Молоко", 80);
@@ -52,7 +56,6 @@ public class StorageService {
         productMap.put(juice.getId(), juice);
         productMap.put(chocolate.getId(), chocolate);
 
-        // Статьи (как в исходном main)
         Article article1 = new Article(UUID.randomUUID(), "Польза молока", "Молоко богато кальцием и белком");
         Article article2 = new Article(UUID.randomUUID(), "Рецепт сырников", "Для сырников нужен творог и сыр");
         Article article3 = new Article(UUID.randomUUID(), "Программирование на Java", "Java – объектно-ориентированный язык");
